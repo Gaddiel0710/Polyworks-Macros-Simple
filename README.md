@@ -1,9 +1,14 @@
-# Macros-Polyworks
+# Macro para iniciar en las macros - Polyworks Macro Script
 ## _Repositorio de macros simples para polyworks_
 
 ### Codigo ayuda para empezar con macros en Polyworks
+Dentro de poliworks se utiliza un lenguaje de programacion MSCL (Lenguaje de Control de Macro Script) 
+
+##Descripcion de macro
 ```mscl
 version "5.0"
+# linea de version, hace referencia a la version de codigo macro a utilizar para iniciar
+#a programar las sentencias y operaciones a utilizar en la macro.
 ############################## POLYWORKS ######################################
 #
 # ---- InnovMetric Software Inc.
@@ -11,101 +16,46 @@ version "5.0"
 # ---- Version :    2020 (build 2255)
 # ---- Date    :    Wednesday, March 25, 2020 - 13:57:52
 #
-############################## DISCLAIMER #####################################
-#
-# This macro script is provided "AS IS", and may contain bugs, errors, and 
-# other problems that could cause system or other failures and data loss. 
-# InnovMetric Software Inc. disclaims any warranty or liability obligations 
-# of any kind to the user of this macro.
-#
-############################## DESCRIPTION ####################################
+############################## DESCRIPCION ####################################
 # 
-# This macro is a good starting point to start developing your programming 
-# skills with the PolyWorks Macro Script Command Language (MSCL). It teaches you 
-# the basics to create your own macros, with a good mix between explanations 
-# and examples.
+#Esta macro es un buen punto de partida para desarrollar tus habilidades de
+#programación con el lenguaje de comandos de script de macros de PolyWorks (MSCL).
+#Te enseña los conceptos básicos para crear tus propias macros, con una buena
+#combinación de explicaciones y ejemplos.
 #
-############################## VERSIONS #######################################
-#
-# VERSION 1.0
-# VERSION 1.1 [PW 2021 IR0] Added AND/OR/NOT
-#
-############################## CODE ###########################################
+```
 
+##Desgloce de codigo
+``` mscl
+############################## Codigo ###########################################
+#
+#      Para comprender mejor el desgloce del codigo y la funcion de cada linea,
+#      puede activar la ventana de historial de comando
+#
 # Command History (Tools -> Commands -> Command History)
+#
 # ------------------------------------------------------
-# Each operation performed in PolyWorks will write a corresponding command
-# in the Command History. Those commands are the building blocks of macros.
-
+#     Cada operación realizada en PolyWorks escribirá un comando
+#     correspondiente en el historial de comandos.
+#     Estos comandos son los componentes básicos de las macros.
 
 # Macro Script Editor (Tools -> Macro Scripts -> Macro Script Editor)
 # --------------------------------------------------------------------
-# This text editor allows you to write and run your own macros.
-# You can easily copy and paste commands from the Command History into
-# the Macro Script Editor.
-
-
-# Help
-# --------------------------------------------------------------------
-# Two documents are available to help you in creating new macros:
-#   - Help -> Reference Guides -> Commands (HTML file containing all the available macro commands)
-#   - Help -> Reference Guides -> Macro Scripts Reference Guide (PDF file that will take you from
-#             creating basic to advanced macro scripts )
 #
-# Two webinars are also available on our Youtube channel
-#   - Customizing the PolyWorks Graphical User Interface (Put a macro in an interface button)
-#   - Simplifying tasks using macro scripts
-
-# Additional macro topics are also available on our Youtube channel:
-#   - Custom Tools Using the Macro Script Editor
-#   - Utilizing PolyWorks Macro Scripting for Lean Process Improvements
-
-
-# Save & Run
-# --------------------------------------------------------------
-# Macros can be saved and run from any directory. 
-# User Configuration (.innovmetric): Best location if you want to run in from multiple projects
-# Workspace (*_Files\macros\): Best location if a macro is only used in one specific project
-#
-# Check Syntax: Make sure your code doesn't have errors before running it 
-#              (Macro Script Editor -> Debug -> Check Syntax)
-# Run: Run through a complete macro
-#      (Macro Script Editor -> Debug -> Run)
-# Step: Step through the macro, allowing you to see and understand what's going on.
-#       Recommended for this tutorial (F10 or Macro Script Editor -> Debug -> Run)
-#
-# Multiple tools are available to debug a macro script:
-#   - Break Points will stop the Run command, then resume running or stepping through the macro
-#   - Run to cursor, skip, etc.
-
-
-# Text
-# ------------------------------------------------------------
-# Version: The Script version is required (start of a script)
-# Comments: Use "#" at the start of the line to comment it out
-
-
-# Commands
-# ------------------------------------------------------------
-# Commands: Perform actions (written in uppercase).
-# Arguments: Give the specific details on the actions to be taken, such as on what object the action should be performed.
-# 
-# Auto-complete will provide choices when manually entering commands.
-# For example in the Workspace Manager:
-#    - After typing "W" the auto-complete flyout window will suggest WINDOW, WORKSPACE or WHILE.
-#    - After typing WINDOW, you can chose between APPLICATION, REFRESH, etc.
-#    - After typing the complete Command WINDOW VIEW, you can fill in the Arguments.
+#    Este editor de texto te permite escribir y ejecutar tus propias macros.
+#    Puedes copiar y pegar fácilmente comandos del Historial de comandos
+#    en el Editor de scripts de macros.
 
 WINDOW VIEW ( "Command History", "On" )
 
 
-# Echo
+#    Comando "Echo"
 # -----------------------------------------------------------
-# There are 2 ways to display information to the user:
-# MACRO ECHO: Will output information to the Command History
-# MACRO PAUSE: Will pop a window with information
+# Este comando nos permite mostrar informacion al usuario, esta siendo de 2 formas diferentes
+# MACRO ECHO: Este comando enviará información al Historial de comandos
+# MACRO PAUSE: Este comando mostrara un mensaje en una ventana emergente con la informacion
 # 
-# Quotes: Note that Quotes "" are required when using text
+# Comillas: Tenga en cuenta que las comillas "" son necesarias cuando se utiliza texto
 
 MACRO ECHO ( "Hello World." )
 MACRO PAUSE ( "Hi", "Hello Earth." )
@@ -113,43 +63,48 @@ MACRO PAUSE ( "Hi", "Hello Earth." )
 
 # Variables
 # -------------------------------------------------------------------
-# Variables are used to store information (imagine a container, or a bucket).
-# You can either put information "IN" the container, or take it "OUT" to use it.
+# Las variables se usan para almacenar información (imagínate un contenedor o un depósito).
+# Puedes introducir información dentro del contenedor o extraerla para usarla.
 #
-# DECLARE: For that container to exist, it needs to be declared first.
-# SET: Use this command to assign a value to a variable, once declared. 
+# DECLARE: Para que ese contenedor exista, primero debe declararse
+# SET: Usa este comando para asignar un valor a una variable, una vez declarada. #
+# También puede establecer el valor de las variables agregando el valor después del nombre de la variable (opcional).
 #
-# You can also set the value of the variables by adding the value after the variable name (optional)
+# $: Necesario si desea usar el valor de una variable (OUT).
+# {}: Necesario para aislar una variable dentro de una cadena de texto.
 #
-# $: Needed if you want to use the value of a variable (OUT)
-# {}: Needed to isolate a variable within a string of text
+# Tipos de variables (detectadas automáticamente, no es necesario especificar):
+# - INTEGER: Número entero (sin punto decimal).
+# - DOUBLE: Número que permite puntos decimales.
+# - STRING: Lista de caracteres alfanuméricos.
 #
-# Variables Types (automatically detected, no need to specify):
-#   - Integer: Whole number (no decimal point)
-#   - Double: Number that allows decimal points
-#   - String: List of alphanumeric characters
-#
-# Variable Modifiers
-#   :l Lowercase
-#   :u Uppercase
+# Modificadores de variables
+# :l Minúsculas.
+# :u Mayúsculas.
 # 
-# Reserved Variables
-#  - _PI (3.14159...)
-#  - Many others starting with underscore "_"
+# Variables reservadas
+# - _PI (3.14159...)
+# - El script cuenta con muchas otras variables que empiezan con un guión bajo "_".
 #
-# Mouse Over: Note that you can mouse over variables to get their values.
+# Puede pasar el ratón por encima de las variables para conocer su valor o valores.
+# Igual al pasar el raton sobre lineas de codigo incompletas o con informacion faltante puede conocer el tipo de estructura que debe llevar
+# o el tipo de informacion que se debe usar para terminar la linea de codigo  
 
-
+#Declaracion de variables
 DECLARE variable1 "Message 1"
 DECLARE variable2 
 DECLARE a 1
 DECLARE b
 
+#Asignacion de valores a variables
 SET variable2 "Message 2"
 SET b 2
 
+#Mostrar informacion en historial de comandos 
 MACRO ECHO ( $variable2 )
+#Mostrar informacion en una ventana emergente
 MACRO PAUSE ( "Use Variable", $variable1 )
+
 
 MACRO ECHO ( "Message = $variable2" )
 MACRO PAUSE ( "Followed", "$variable2 followed by extra words" )
@@ -159,12 +114,12 @@ MACRO PAUSE ( "PI", "Pi = ${_PI}" )
 MACRO PAUSE ( "Uppercase", "$variable1 Uppercase = ${variable1:u}" )
 
 
-# Mathematical Expressions
+# Expresiones Matematicas
 # -------------------------------------------------------------------------------
-# EXPR: Computes an equation to set a value
-# EXPR_I: Computes an equation and keeps the integer part of the result (no rounding)
-# +, -, *, /, % (Modulo): Arithmetic operators available in equations
-# ABS (Absolute), SQRT (Square Root), SIN, COS, TAN, etc. : More operators
+# EXPR: Calcula una ecuación para establecer un valor
+# EXPR_I: Calcula una ecuación y conserva la parte entera del resultado (sin redondeo)
+# +, -, *, /, % (Modulo):Operadores aritméticos disponibles en ecuaciones
+# ABS (Absolute), SQRT (Square Root), SIN, COS, TAN, etc. : otros operadores
 
 DECLARE c
 DECLARE d
@@ -177,28 +132,29 @@ SET e EXPR_I ( SQRT( $c ) )
 MACRO PAUSE ( "Math", "$a + $b = $c", "Square Root of $c = $d", "Square Root of $c (no decimals) = $e" )
 
 
-# Logical Expressions
+# Expresiones Logicas
 # -------------------------------------------------------------------------------
-# You can use logicial expressions (conditions) to have a particular processing done.
+# Puede utilizar expresiones lógicas (condiciones) para realizar un procesamiento particular.
 #
-# IF:     Start the conditional statement 
-# ELSEIF: Add alternative conditions
-# ELSE:   Indicate an alternative for cases where all IF or ELSEIF conditions are false
-# ENDIF:  Stop the conditional statement 
+# IF:     Iniciar la declaración condicional
+# ELSEIF: Agregar condiciones alternativas
+# ELSE:   Indique una alternativa para los casos donde todas las condiciones IF o ELSEIF son falsas
+# ENDIF:  Detener la declaración condicional
 #
-# Comparison operators:
-#   < smaller than
-#   <= smaller than or equal to
-#   > larger than
-#   >= larger than or equal to
-#   == equal to
-#   != different from
+# Operadores de comparacion:
+#   < Menor que
+#   <= Menor que o igual a
+#   > Mayor que
+#   >= Mayor que o igual a
+#   == Igual a
+#   != Diferente de
 # 
-# Logical operators:
-#   AND (the two conditions must be true)
-#   OR  (at least one of the two conditions must be true)
-#   NOT (inverts the logic)
+# Operadores logico:
+#   AND (Las 2 condiciones son verdaderas)
+#   OR  (al menos una o las dos condiciones deben ser verdaderas)
+#   NOT (invertir la logica)
 
+#Ejemplo de sentencia "Si"
 IF $c == 0
     MACRO PAUSE ( "Zero", "$c equals zero." )
 ELSEIF $c < 0
@@ -215,32 +171,32 @@ IF $a > 0 OR $b > 0
     MACRO PAUSE ( "Bigger than zero", "$a OR $b is bigger than zero." )
 ENDIF
 
-# Arrays
+# Arrays = "Matrices"
 # -------------------------------------------------------------------------------
-# Multiple values assigned to a single variable is called an array.
-# The first value of that array is variable[1] (Second value is variable[2]).
+# Los valores múltiples asignados a una sola variable se denominan matriz.
+# El primer valor de esa matriz es la variable[1] (el segundo valor es la variable[2]).
 #
-# Size: Get the number of values present in the variable array.
-# {}: Useful to declare an array
+# Size: Obtenga el número de valores presentes en la matriz de variables.
+# {}: Útil para declarar una matriz
 
-DECLARE PolyWorks { "Inspector", "Modeler", "IMAlign", "IMMerge" }
-DECLARE PolyWorksSize SIZE( PolyWorks )
-MACRO PAUSE ( "Main modules", "The $PolyWorksSize main modules of PolyWorks are: $polyWorks[1], $polyWorks[2], $polyWorks[3] and $polyWorks[4]" )
+DECLARE Modulos { "Inspeccion", "Modelador", "IMAlineacion", "IMFusion" }
+DECLARE ModulosSize SIZE( Modulos )
+MACRO PAUSE ( "Main modules", "The $ModulosSize main modules of PolyWorks are: $Modulos[1], $Modulos[2], $Modulos[3] and $Modulos[4]" )
 
-# Loops
+# Loops = "Bucles"
 # -------------------------------------------------------------------------------
-# Loops are useful to repeat steps.
+# Los bulces son usados ara repetir pasos o procesos.
 #
-# WHILE: Start a loop
-# ENDWHILE: Stop a loop
-# BREAK: End the repeating loop
-# CONTINUE: Continue outside of the repeating loop
+# WHILE: inicia el bucle
+# ENDWHILE: detiene (termina) el bucle
+# BREAK: finaliza la repeticion del bucle
+# CONTINUE: Continuar fuera del bucle repetitivo
 #
-# WHILE loops may use a counter (e.g. "i") to count cycles through the loop.
-# Once the counter has reached its indicated value, the loop stops.
+# WHILE Los bucles pueden usar un contador (por ejemplo, "i") para contar los ciclos a través del bucle.
+# Una vez que el contador alcanza su valor indicado, el bucle se detiene.
 #
-# ++: Increment variable values (same as: SET i EXPR ( $i + 1 ) )
-# --: Decrement variable values (same as: SET i EXPR ( $i - 1 ) )
+# ++: Incrementa el valor de las variables (same as: SET i EXPR ( $i + 1 ) )
+# --: Decrementa el valor de las variables (same as: SET i EXPR ( $i - 1 ) )
 
 DECLARE PolyWorksIter 1
 WHILE $PolyWorksIter <= $PolyWorksSize
@@ -249,23 +205,24 @@ WHILE $PolyWorksIter <= $PolyWorksSize
     ++ PolyWorksIter
 ENDWHILE 
 
-# User Input
+# Ingresar un valor, comando "Input"
 # --------------------------------
-# You can interact with the user to get input.
+# Puede interactuar con el usuario para obtener información.
 #
 # Question:  Yes/No question (returns 1 for yes or 0 for no)
-# Directory: Browse for a Path
-# File_Path: Browse for a File
-# Double:    Input a Double
-# Integer:   Input an Integer
-# String:    Input a String
-# Multiple:  Input Multiple Parameters (arguments: 1-type, 2-label, 3-default value)
+# Directory: Buscar una direccion en el directorio de la computadora
+# File_Path: Buscar un archivo
+# Double:    Ingresar un valor con decimales
+# Integer:   Ingresar un valor entero
+# String:    Ingresar un valor de tipo caracter o cadena de caracteres
+# Multiple:  Ingresar valores de multiples parametros (Los argumentos pueden ser entero, fotante(doble),string, en el orden que quiera) (arguments: 1-type, 2-label, 3-default value)
+# Note: los parametros del comando de variables multiple deben ser siempre en esos 3 tipos.
 #
-# More Variable Modifiers
-#   :e Keep the Suffix (Extract file extension)
-#   :r Remove the Suffix (Remove file extension)
-#   :h Keep File Path (Remove file name)
-#   :t Remove File Path (Keep file name)
+#Más modificadores de variables
+#   :e Mantener el sufijo o extraer la extension (ejemplo: .pdf) 
+#   :r Remover el sufijo o la extencion 
+#   :h Mantener el directorio o el nombre 
+#   :t Remover el directorio o el nombre 
 
 DECLARE answer
 MACRO INPUT QUESTION ( answer, "Click on YES or No" )
@@ -295,12 +252,12 @@ MACRO INPUT MULTIPLE_PARAMETERS ( "Multiple Parameters", "About you:",\
 MACRO PAUSE ( "About You", "$name is $age years old (${height}m tall)." )
 
 
-# Text files
+# Archivos de texto
 # ---------------------------------------------
-# Text files can be written/read. When reading a text file, it may be read one line
-# at a time, or all at once and stored in an array for each file column.
+# Se pueden escribir y leer archivos de texto. Al leer un archivo de texto, se puede leer una línea.
+# a la vez, o todos a la vez y almacenados en una matriz para cada columna de archivo.
 #
-# More reserved variables:
+# Mas variables reservadas:
 #   - _TEMP_PATH: Temporary folder (will get deleted upon rebooting)
 #   - _PWK_FILES_PATH: Folder inside the Workspace (will travel along with a project)
 
