@@ -4,7 +4,7 @@
 ### Codigo ayuda para empezar con macros en Polyworks
 Dentro de poliworks se utiliza un lenguaje de programacion MSCL (Lenguaje de Control de Macro Script) 
 
-##Descripcion de macro
+##Descripcion de macro y Desgloce de codigo
 ```mscl
 version "5.0"
 # linea de version, hace referencia a la version de codigo macro a utilizar para iniciar
@@ -23,10 +23,6 @@ version "5.0"
 #Te enseña los conceptos básicos para crear tus propias macros, con una buena
 #combinación de explicaciones y ejemplos.
 #
-```
-
-##Desgloce de codigo
-``` mscl
 ############################## Codigo ###########################################
 #
 #      Para comprender mejor el desgloce del codigo y la funcion de cada linea,
